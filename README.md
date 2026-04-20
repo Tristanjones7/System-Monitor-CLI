@@ -1,33 +1,50 @@
 # 🔍 DevOps System Monitor CLI
 
 <p align="center">
-A lightweight Python CLI tool that monitors system resources in real time.
+A lightweight Python CLI tool that monitors system resources in real time, simulating basic observability used in DevOps and Cloud environments.
+</p>
+
+---
+
+## 📊 Project Status
+
+<p align="center">
+
+![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python)
+![Status](https://img.shields.io/badge/Status-Active-success)
+![DevOps](https://img.shields.io/badge/Focus-DevOps%20Learning-orange)
+![License](https://img.shields.io/badge/License-MIT-lightgrey)
+
 </p>
 
 ---
 
 ## 🚀 Overview
 
-This project is a simple **DevOps-style system monitoring tool** built using Python.  
-It provides real-time visibility into:
+This project is a simple **system monitoring CLI tool built with Python**.
 
+It provides real-time insights into:
 - CPU usage
 - Memory usage
 - Disk usage
 
-It simulates the kind of lightweight monitoring tools used in **production systems, servers, and cloud environments**.
+It reflects the type of lightweight monitoring tools used in:
+- Cloud infrastructure
+- Linux servers
+- DevOps / SRE environments
 
 ---
 
 ## 🧠 Why I Built This
 
-As part of my DevOps / Cloud Engineering journey, I’m building daily projects to strengthen:
+This is part of my **100-day DevOps engineering project journey**, focused on building real-world skills through daily hands-on projects.
 
-- Linux and system awareness
+This project helps strengthen:
+
+- Linux system understanding
 - Python automation skills
-- Infrastructure monitoring fundamentals
-
-This project reflects how engineers quickly check system health in real-world environments.
+- Infrastructure monitoring basics
+- DevOps mindset (observability first)
 
 ---
 
