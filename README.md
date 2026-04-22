@@ -211,4 +211,4 @@ _Add screenshots here (recommended):_
 ## 👨‍💻 Author
 
 **Tristan Jones**  
-Aspiring Cloud Engineer | AWS Certified  
+Cloud Engineer | AWS Certified  
