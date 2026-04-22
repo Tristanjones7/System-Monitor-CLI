@@ -1,26 +1,60 @@
 import psutil
+import time
+from datetime import datetime
 
-def get_cpu_usage():
-    return psutil.cpu_percent(interval=1)
+CPU_THRESHOLD = 80
+MEMORY_THRESHOLD = 80
+DISK_THRESHOLD = 80
 
-def get_memory_usage():
-    memory = psutil.virtual_memory()
-    return memory.percent
+LOG_FILE = "system.log"
 
-def get_disk_usage():
-    disk = psutil.disk_usage('/')
-    return disk.percent
+
+def log_message(message):
+    with open(LOG_FILE, "a") as f:
+        f.write(message + "\n")
+
+
+def get_stats():
+    cpu = psutil.cpu_percent(interval=1)
+    memory = psutil.virtual_memory().percent
+    disk = psutil.disk_usage('/').percent
+    return cpu, memory, disk
+
+
+def check_alerts(cpu, memory, disk):
+    alerts = []
+
+    if cpu > CPU_THRESHOLD:
+        alerts.append(f"⚠️ High CPU Usage: {cpu}%")
+
+    if memory > MEMORY_THRESHOLD:
+        alerts.append(f"⚠️ High Memory Usage: {memory}%")
+
+    if disk > DISK_THRESHOLD:
+        alerts.append(f"⚠️ High Disk Usage: {disk}%")
+
+    return alerts
+
 
 def main():
-    print("🔍 System Monitor\n")
+    print("🔍 Running System Monitor (Press Ctrl+C to stop)\n")
 
-    cpu = get_cpu_usage()
-    memory = get_memory_usage()
-    disk = get_disk_usage()
+    while True:
+        cpu, memory, disk = get_stats()
 
-    print(f"CPU Usage: {cpu}%")
-    print(f"Memory Usage: {memory}%")
-    print(f"Disk Usage: {disk}%")
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        log = f"{timestamp} | CPU: {cpu}% | Memory: {memory}% | Disk: {disk}%"
+
+        print(log)
+        log_message(log)
+
+        alerts = check_alerts(cpu, memory, disk)
+        for alert in alerts:
+            print(alert)
+            log_message(alert)
+
+        time.sleep(5)
+
 
 if __name__ == "__main__":
     main()
